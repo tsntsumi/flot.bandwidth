@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Flot plugin BandWidth example</title>
+        <script type="text/javascript" src="../scripts/jquery-3.0.0.min.js"></script>
+        <script type="text/javascript" src="../scripts/jquery.flot.min.js"></script>
+        <script type="text/javascript" src="../scripts/jquery.flot.time.min.js"></script>
+        <script type="text/javascript" src="jquery.flot.bandwidth.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+var pressures = [
+    [Date.UTC(2010,0, 1),160,100],  [Date.UTC(2010,0, 2),133, 87], [Date.UTC(2010,0, 3),138, 94],
+    [Date.UTC(2010,0, 4),136, 84],  [Date.UTC(2010,0, 5),125, 78], [Date.UTC(2010,0, 6),131, 84],
+    [Date.UTC(2010,0, 7),136, 84],  [Date.UTC(2010,0, 8),160, 99], [Date.UTC(2010,0, 9),123, 80],
+    [Date.UTC(2010,0,10),138, 85],  [Date.UTC(2010,0,11),139, 85], [Date.UTC(2010,0,12),125, 79],
+    [Date.UTC(2010,0,13),130, 79],  [Date.UTC(2010,0,14),176, 92], [Date.UTC(2010,0,15),137, 79],
+    [Date.UTC(2010,0,16),124, 81],  [Date.UTC(2010,0,17),122, 74], [Date.UTC(2010,0,18),130, 82],
+    [Date.UTC(2010,0,19),132, 76],  [Date.UTC(2010,0,20),134, 83], [Date.UTC(2010,0,21),126, 77],
+    [Date.UTC(2010,0,22),126, 74],  [Date.UTC(2010,0,23),121, 79], [Date.UTC(2010,0,24),137, 72],
+    [Date.UTC(2010,0,25),138, 74],  [Date.UTC(2010,0,26),120, 79]
+];
+var sys = $.map(pressures, function(pressure) {
+    return [[ pressure[0], pressure[1] ]];
+});
+var dia = $.map(pressures, function(pressure) {
+    return [[ pressure[0], pressure[2] ]];
+})
+var data = [
+    { label: "Pressure", data: pressures, bandwidth: {
+         show: true, lineWidth: 0,
+         fill: 0.8, fillColor: { colors: [ 'green', 'yellow', 'blue' ] }
+        }
+    },
+    { label: "Sys", data: sys },
+    { label: "Dia", data: dia }
+];
+var p = $.plot($('#placeholder'), data, { xaxis: { mode: "time", timeformat: "%m/%d" }});
+            });
+        </script>
+    </head>
+    <body>
+        <div id="placeholder" style="width:500px;height:300px;"></div>
+    </body>
+</html>
