@@ -109,10 +109,16 @@ data: [
                 barWidth = series.bandwidth.barWidth,
                 fillColor = getFillColor(series.bandwidth, series.color),
                 shadowSize = series.shadowSize;
+            if (typeof lineWidth === 'string') {
+                lineWidth = parseInt(barWidth, 0);
+            }
             if (lineWidth == 0) {
                 lineWidth = 0.001;
             }
-            if (lineWidth > 0 && shadowSize > 0) {
+            if (typeof barWidth === 'string') {
+                barWidth = parseInt(barWidth, 0);
+            }
+            if (barWidth > 0 && shadowSize > 0) {
                 // draw shadow
                 var shadowColor = "rgba(0,0,0,0.2)";
                 ctx.lineWidth = lineWidth;
