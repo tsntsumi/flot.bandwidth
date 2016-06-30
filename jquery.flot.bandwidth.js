@@ -8,7 +8,7 @@ Flot plugin for bandwidth bars on plot canvas.
 
 Available options are:
 series: {
-    extents: {
+    bandwidth: {
         show: boolean -- enable plugin for given data series (false).
         lineWidth: number -- The linewidth of a bandwidth bar (3).
         barWidth: number -- The width of a bandwidth bar (6).
